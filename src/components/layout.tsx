@@ -3,7 +3,7 @@ import { css } from "@emotion/core"
 import { Link } from "gatsby"
 import { rhythm } from "../utils/typography"
 
-const Layout = ({ children }) => {
+const Layout: React.FC = ({ children }) => {
   return (
     <div
       css={css`
