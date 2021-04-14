@@ -1,6 +1,6 @@
 import React from "react"
 
-type City = "London"
+type City = "London" | "New York"
 
 const TypeScript = () => {
   let city: City;
