@@ -1,10 +1,20 @@
 import React from "react"
-import { graphql, Link } from "gatsby";
+import { graphql, Link, PageProps } from "gatsby";
 import { css } from "@emotion/core";
 import { rhythm } from "../utils/typography";
-import Layout from "../components/layout"
+import Layout from "../components/layout";
+import { MarkdownRemark } from '../types/markdown-remark'
 
-const Home = ({ data }) => {
+type GraphQLResult = {
+  allMarkdownRemark: {
+    totalCount: number;
+    edges: {
+      node: MarkdownRemark
+    }[]
+  }
+}
+
+const Home: React.FC<PageProps <GraphQLResult>> = ({ data }) => {
   return (
     <Layout>
       <div>
