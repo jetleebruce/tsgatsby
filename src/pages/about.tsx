@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 
-const About = () => {
+const About: React.FC = () => {
   return (
     <Layout>
       <h1>About Pandas Eating Lots</h1>

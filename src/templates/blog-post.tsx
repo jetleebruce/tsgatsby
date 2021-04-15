@@ -1,8 +1,17 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, PageProps } from "gatsby"
 import Layout from "../components/layout"
 
-const BlogPost = ({ data }) => {
+type GraphQLResult = {
+  markdownRemark: {
+    html: string;
+    frontmatter: {
+      title: string;
+    }
+  }
+}
+
+const BlogPost: React.FC<PageProps<GraphQLResult>> = ({ data }) => {
   const post = data.markdownRemark;
   return (
     <Layout>
