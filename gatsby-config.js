@@ -1,27 +1,3 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.com/docs/gatsby-config/
- */
+require("ts-node").register();
 
-module.exports = {
-    /* Your site config here */
-    plugins: [
-      {
-        resolve: `gatsby-source-filesystem`,
-        options: {
-          name: `src`,
-          path: `./src`,
-        },
-      },
-      `gatsby-transformer-remark`,
-      `gatsby-plugin-emotion`,
-      {
-        resolve: `gatsby-plugin-typography`,
-        options: {
-          pathToConfigModule: `src/utils/typography`,
-        },
-      },
-    ],
-  }
-  
+module exports = require('./src/gatsby/config')
