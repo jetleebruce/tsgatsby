@@ -69,6 +69,6 @@
     "skipLibCheck": true,                           /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true        /* Disallow inconsistently-cased references to the same file. */
   },
-  "include": ["./src", "gatsby-config.js"],
+  "include": ["./src", "gatsby-config.js", "gatsby-node.ts"],
   "exclude": ["./node_modules", "./public", "./.cache"],
 }

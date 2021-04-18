@@ -4,7 +4,7 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
-export default = {
+export default {
     /* Your site config here */
     plugins: [
       {

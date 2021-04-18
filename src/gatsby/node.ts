@@ -1,7 +1,9 @@
+import { GatsbyNode } from "gatsby";
+
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 
-module.exports.onCreateNode = ({ node, getNode, actions }) => {
+export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === `MarkdownRemark`) {
     const slug = createFilePath({ node, getNode, basePath: `pages` })
@@ -13,9 +15,21 @@ module.exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
-module.exports.createPages = async ({ graphql, actions }) => {
+type GraphQLResult = {
+  allMarkdownRemark: {
+    edges: {
+      node: {
+        fields: {
+          slug: string;
+      }
+    }
+  }[]
+  }
+}
+
+export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions }) => {
     const { createPage } = actions
-    const result = await graphql(`
+    const result = await graphql<GraphQLResult>(`
       query {
         allMarkdownRemark {
           edges {
@@ -28,6 +42,10 @@ module.exports.createPages = async ({ graphql, actions }) => {
         }
       }
     `)
+  
+  if (!result.data) {
+    throw new Error('Failed getting post')
+  }
 
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
         createPage({
